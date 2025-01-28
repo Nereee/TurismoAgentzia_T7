@@ -23,3 +23,8 @@ function formularioakIkusi(idFormulario) {
     const formularioSeleccionado = document.getElementById(idFormulario);
     formularioSeleccionado.classList.remove('hidden');
 }
+
+function joanEtorriErakutsi(idFormulario) {
+    const formularioSeleccionado = document.getElementById(idFormulario);
+    formularioSeleccionado.classList.remove('hidden');
+}

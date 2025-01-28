@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 24-01-2025 a las 15:45:18
+-- Servidor: 127.0.0.1:3307
+-- Tiempo de generación: 28-01-2025 a las 13:24:45
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -32,6 +32,8 @@ CREATE TABLE `agentzia` (
   `izena` varchar(50) NOT NULL,
   `logoa` varchar(200) DEFAULT NULL,
   `kolorea` varchar(7) DEFAULT NULL,
+  `Pasahitza` varchar(50) NOT NULL,
+  `Erabiltzaile` varchar(25) NOT NULL,
   `kodAgMota` varchar(2) NOT NULL,
   `kodLangKop` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
@@ -40,9 +42,8 @@ CREATE TABLE `agentzia` (
 -- Volcado de datos para la tabla `agentzia`
 --
 
-INSERT INTO `agentzia` (`IDAgentzia`, `izena`, `logoa`, `kolorea`, `kodAgMota`, `kodLangKop`) VALUES
-(1, 'Primera', 'logo1', 'kolore1', 'A1', 'L1'),
-(2, 'sEGUNDA', 'lOGAZO', 'kolor2', 'A3', 'L3');
+INSERT INTO `agentzia` (`IDAgentzia`, `izena`, `logoa`, `kolorea`, `Pasahitza`, `Erabiltzaile`, `kodAgMota`, `kodLangKop`) VALUES
+(1, 'Lehenengoa', 'https://i.blogs.es/a19bfc/testing/1366_2000.webp', '', 'admin', 'admin', 'A1', 'L1');
 
 -- --------------------------------------------------------
 
@@ -72,8 +73,8 @@ INSERT INTO `agentzia_mota` (`kodAgMota`, `deskribapena`) VALUES
 
 CREATE TABLE `airelinea` (
   `KodAirelinea` varchar(5) NOT NULL,
-  `izena` varchar(20) NOT NULL,
-  `herrialdea` varchar(50) NOT NULL
+  `izena` varchar(50) NOT NULL,
+  `herrialdea` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
@@ -138,7 +139,7 @@ INSERT INTO `airelinea` (`KodAirelinea`, `izena`, `herrialdea`) VALUES
 
 CREATE TABLE `aireportua` (
   `KodAireportua` varchar(5) NOT NULL,
-  `hiria` varchar(20) NOT NULL
+  `hiria` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
@@ -164,22 +165,22 @@ INSERT INTO `aireportua` (`KodAireportua`, `hiria`) VALUES
 ('BSB', 'BRASIL (brasilia)'),
 ('BUE', 'Buenos Aires'),
 ('CAI', 'EG El Cairo'),
-('CAS', 'MARRUECOS (Casablanc'),
+('CAS', 'MARRUECOS (Casablanca)'),
 ('CCS', 'VENEZUELA ( CARACAS)'),
-('CDG', 'FRANCIA,París (aerop'),
+('CDG', 'FRANCIA,París (aeropuerto Charles de Gaulle)'),
 ('CPH', 'DINAMARCA'),
 ('DTT', 'DETROIT'),
 ('DUB', 'IRLANDA (DUBLIN)'),
-('DUS', 'ALEMANIA (Dusseldorf'),
+('DUS', 'ALEMANIA (Dusseldorf )'),
 ('EAS', 'SAN SEBASTIAN'),
-('FRA', 'ALEMANIA (Frankfurt '),
+('FRA', 'ALEMANIA (Frankfurt )'),
 ('FUE', 'FUERTEVENTURA'),
 ('GMZ', 'LA GOMERA'),
 ('GRO', 'Gerona'),
 ('GRX', 'Granada'),
 ('GVA', 'SUIZA (Ginebra )'),
 ('HAM', 'ALEMANIA (hamburgo)'),
-('HEL', 'FINLANDIA (Helsinki '),
+('HEL', 'FINLANDIA (Helsinki )'),
 ('HOU', 'Houston'),
 ('IBZ', 'Ibiza'),
 ('IST', 'TR (ESTAMBUL)'),
@@ -212,18 +213,18 @@ INSERT INTO `aireportua` (`KodAireportua`, `hiria`) VALUES
 ('PHL', 'Philadelphia PHL'),
 ('PMI', 'PALMA DE MALLORCA'),
 ('PNA', 'Pamplona'),
-('PRG', 'REPÚBLICA CHECA (Pra'),
-('RAK', 'MARRUECOS (Marrakech'),
+('PRG', 'REPÚBLICA CHECA (Praga )'),
+('RAK', 'MARRUECOS (Marrakech)'),
 ('REU', 'REUS'),
-('RIO', 'BRASIL (Rio de Janei'),
+('RIO', 'BRASIL (Rio de Janeiro )'),
 ('SAO', 'BRASIL (Sao Paulo )'),
-('SCQ', 'Santiago de Composte'),
-('SDQ', 'REPÚBLICA DOMINICANA'),
+('SCQ', 'Santiago de Compostela'),
+('SDQ', 'REPÚBLICA DOMINICANA (Santo Domingo)'),
 ('SDR', 'SANTANDER'),
 ('SEA', 'Seattle'),
 ('SFO', 'SAN FRANCISCO'),
 ('SLM', 'Salamanca'),
-('SPC', 'Santa Cruz de la Pal'),
+('SPC', 'Santa Cruz de la Palma'),
 ('STN', 'LONDRES (Stanted)'),
 ('STO', 'SUECIA (Estocolmo)'),
 ('STR', 'ALEMANIA (Stuttgart)'),
@@ -237,11 +238,11 @@ INSERT INTO `aireportua` (`KodAireportua`, `hiria`) VALUES
 ('VIT', 'VITORIA'),
 ('VLC', 'Valencia'),
 ('WAS', 'WASHINGTON'),
-('WAW', 'POLONIA (Varsovia ) '),
+('WAW', 'POLONIA (Varsovia ) WAW'),
 ('XRY', 'JEREZ DE LA FRONTERA'),
 ('YMQ', 'Montreal, Québec'),
-('YOW', 'CA Ottawa, Ontario Y'),
-('YTO', 'CA Toronto, Ontario '),
+('YOW', 'CA Ottawa, Ontario YOW'),
+('YTO', 'CA Toronto, Ontario YTO'),
 ('YVR', 'CA VANCOUVER'),
 ('ZAZ', 'Zaragoza'),
 ('ZRH', 'SUIZA (Zurich)');
@@ -310,7 +311,7 @@ INSERT INTO `bidaia_mota` (`kodBidaiaMota`, `deskribapena`) VALUES
 CREATE TABLE `hegaldia` (
   `IDHegaldia` varchar(5) NOT NULL,
   `mota` tinyint(10) NOT NULL,
-  `HegaldiKodea` varchar(5) DEFAULT NULL,
+  `HegaldiKodea` varchar(5) NOT NULL,
   `BidaiaIraupen` int(11) NOT NULL,
   `prezioa` smallint(6) DEFAULT NULL,
   `IrteeraData` date NOT NULL,
@@ -421,7 +422,7 @@ CREATE TABLE `joanetorri` (
 
 CREATE TABLE `langile_kopurua` (
   `kodLangKop` varchar(2) NOT NULL,
-  `deskribapena` varchar(50) NOT NULL
+  `deskribapena` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
@@ -491,6 +492,7 @@ CREATE TABLE `zerbitzua` (
 --
 ALTER TABLE `agentzia`
   ADD PRIMARY KEY (`IDAgentzia`),
+  ADD UNIQUE KEY `Erabiltzaile` (`Erabiltzaile`),
   ADD KEY `kodAgMota` (`kodAgMota`),
   ADD KEY `kodLangKop` (`kodLangKop`);
 
@@ -632,7 +634,8 @@ ALTER TABLE `joanetorri`
 -- Filtros para la tabla `ostatua`
 --
 ALTER TABLE `ostatua`
-  ADD CONSTRAINT `ostatua_ibfk_1` FOREIGN KEY (`kodLogelaMota`) REFERENCES `logela_mota` (`kodLogelaMota`);
+  ADD CONSTRAINT `ostatua_ibfk_1` FOREIGN KEY (`IDostatua`) REFERENCES `zerbitzua` (`IDZerbitzua`),
+  ADD CONSTRAINT `ostatua_ibfk_2` FOREIGN KEY (`kodLogelaMota`) REFERENCES `logela_mota` (`kodLogelaMota`);
 
 --
 -- Filtros para la tabla `zerbitzua`

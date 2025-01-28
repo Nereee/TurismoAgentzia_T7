@@ -1,7 +1,7 @@
 <?php
 session_start();
-
-if (!isset($_SESSION['nombre'])) {
+require '../php/conexion.php';
+if (!isset($_SESSION['Izena'])) {
     header("Location: ../index.html");
     exit();
 }
@@ -20,9 +20,9 @@ if (!isset($_SESSION['nombre'])) {
 
 <body>
     <header>
-        <img src="../img/logoa.png" alt="Logoa">
+        <img src="<?php echo htmlspecialchars($_SESSION['Logoa']); ?>" alt="Logoa">
         <div class="header-izena">
-            <?php echo htmlspecialchars($_SESSION['nombre']); ?>
+            <?php echo htmlspecialchars($_SESSION['Izena']); ?>
         </div>
     </header>
     <div id="argiaIluna"></div>
@@ -36,6 +36,16 @@ if (!isset($_SESSION['nombre'])) {
                 <label for="tipo-viaje">Bidaia mota:</label>
                 <select id="tipo-viaje" name="tipo-viaje">
                     <option value="">--Aukeratu--</option>
+                    <?php
+                //DATU BASETIK
+                $sql = "select Deskribapena from bidaia_mota"; 
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row['Deskribapena'] . "'>" . $row['Deskribapena'] . "</option>";
+                    }
+                }
+                ?>
                 </select>
 
                 <label for="fecha-inicio">Hasiera Data:</label>
@@ -50,6 +60,17 @@ if (!isset($_SESSION['nombre'])) {
                 <label for="herrialdea">Herrialdea:</label>
                 <select id="herrialdea" name="herrialdea">
                     <option value="">--Aukeratu--</option>
+                    <?php
+                //DATU BASETIK
+                $sql = "select Deskribapena from herrialdea"; 
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row['Deskribapena'] . "'>" . $row['Deskribapena'] . "</option>";
+                    }
+                }
+                $conn->close();
+                ?>
                 </select>
 
                 <label for="descripcion">Deskribapena:</label>

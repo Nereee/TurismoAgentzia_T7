@@ -1,18 +1,25 @@
+<?php
+session_start();
+require '../php/conexion.php';
+if (!isset($_SESSION['Izena'])) {
+    header("Location: ../index.html");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formularioa Zerbitzuak</title>
     <link rel="stylesheet" href="../css/maketazioa.css">
     <link rel="stylesheet" href="../css/ZerbitzuaErregistratu.css">
 </head>
 
 <body>
     <header>
-        <img src="../img/logoa.png" alt="Logo">
-        <div class="header-izena">Zerbitzuen Aukeraketa</div>
+        <img src="<?php echo htmlspecialchars($_SESSION['Logoa']); ?>" alt="Logoa">
+        <?php echo htmlspecialchars($_SESSION['Izena']); ?>
         <div id="argiaIluna"></div>
     </header>
     <section>
@@ -39,14 +46,31 @@
                     <label for="hegaldi-mota">Zein hegaldia mota da?</label>
                     <br><br>
                     <label>
-                        <input type="radio" name="hegaldi-mota"> Joan
+                        <input type="radio" name="hegaldi-mota" onclick="formularioakIkusi('form-hegaldia')"> Joan
                     </label>
                     <label>
-                        <input type="radio" name="hegaldi-mota"> Joan/Etorri
+                        <input type="radio" name="hegaldi-mota" onclick="joanEtorriErakutsi('form-joan-etorri')">
+                        Joan/Etorri
                     </label>
                     <br><br>
-                    <label for="jatorria">Jatorrizko Aireportua</label>
-                    <input type="text" id="jatorria" name="jatorria" placeholder="--Aukeratu--">
+                    <h4>Hegaldia (joana)</h4>
+                    <br>
+                    <label for="jatorria">Jatorrizko aireportua:</label>
+                    <select id="jatorria" name="jatorria">
+                        <option value="">--Aukeratu--</option>
+                        <?php
+                        // DATU BASETIK
+                        $sql = "select KodAireportua, hiria from aireportua"; 
+                        $result = $conn->query($sql);
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<option value='" . $row['hiria'] . "'>" . $row['hiria'] . " -- (" . $row['KodAireportua'] . ")" . "</option>";
+                            }
+                        }
+                        $conn->close();
+                        ?>
+
+                    </select>
                     <br><br>
                     <label for="helmuga">Helmugako Aireportua</label>
                     <input type="text" id="helmuga" name="helmuga" placeholder="--Aukeratu--">
@@ -68,6 +92,7 @@
                     <br><br>
                     <label for="ordua">Bidaiaren Iraupena (h)</label>
                     <input type="number" id="denboraOrduak" name="denboraOrduak">
+                    <br><br>
                 </div>
 
                 <div id="form-ostatua" class="hidden">
@@ -107,8 +132,27 @@
                     <label for="kostua">Prezioa (€):</label>
                     <br>
                     <input type="number" id="kostua" name="kostua" placeholder="Sartu Prezioa" step="0.01">
+                    <br><br>
                 </div>
-                <br>
+
+                <div id="form-joan-etorri" class="hidden">
+                    <h4>Hegaldia (joan-etorria)</h4>
+                    <label for="itzulera-data">Itzulera Data:</label>
+                    <input type="date" id="itzulera-data" name="itzulera-data">
+                    <br><br>
+                    <label for="itzulera-ordua">Itzulera Ordua:</label>
+                    <input type="time" id="itzulera-ordua" name="itzulera-ordua">
+                    <br><br>
+                    <label for="itzulera-ordua">Buletako Bidaiaren Iraupena (h)</label>
+                    <input type="number" id="itzulera-ordua" name="itzulera-ordua">
+                    <br><br>
+                    <label for="bueltako-hegaldia-kodea">Bueltako Hegaldi Kodea:</label>
+                    <input type="text" id="bueltako-hegaldia-kodea" name="bueltako-hegaldia-kodea" placeholder="">
+                    <br><br>
+                    <label for="bueltako-airelinea">Bueltako Airelinea:</label>
+                    <input type="text" id="airelinea" name="bueltako-airelinea" placeholder="--Aukeratu--">
+                    <br><br>
+                </div>
                 <div class="zerbitzua-botoia">
                     <button type="submit">Gorde Zerbitzua</button>
                 </div>

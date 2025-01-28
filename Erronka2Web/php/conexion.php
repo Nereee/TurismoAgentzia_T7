@@ -4,7 +4,7 @@
 $servername = "localhost:3307";
 $username = "root";
 $password = "";
-$dbname = "prueba";
+$dbname = "db_bidaiak";
 
 // Konexioa egin
 $conn = new mysqli($servername, $username, $password, $dbname);
