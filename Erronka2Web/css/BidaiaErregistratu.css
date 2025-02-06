@@ -1,0 +1,89 @@
+.bidaia-formularioa {
+
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.bidaia-formularioa h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+
+.bidaia-input {
+    margin-bottom: 15px;
+}
+
+.bidaia-input label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.bidaia-input input,
+.bidaia-input select {
+    width: calc(100% - 20px);
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+form {
+    background-color: rgb(228, 228, 228);
+    width: 40%;
+    margin: auto;
+    border-radius: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+form textarea {
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    width: 90%;
+    max-width: 90%;
+    min-width: 90%;
+    padding: 8px;
+    border-radius: 5px;
+    border-width: 1px;
+    height: 120px;
+    resize: none;
+}
+
+div input, select {
+    margin-bottom: 15px;
+}
+
+.bidaia-input input[type="date"],
+.bidaia-input input[type="number"] {
+    font-size: 14px;
+}
+
+.bidaia-botoia {
+    text-align: center;
+}
+
+.bidaia-botoia button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.bidaia-botoia button:hover {
+    background-color: #444;
+}

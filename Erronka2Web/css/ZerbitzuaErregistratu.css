@@ -1,0 +1,60 @@
+header img {
+    position: absolute;
+    left: 20px;
+    height: 100px;
+}
+
+header .header-izena {
+    text-align: center;
+}
+
+.zerbitzua-formularioa {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    width: 400px;
+}
+
+.zerbitzua-formularioa h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.zerbitzua-botoia {
+    text-align: center;
+}
+
+.zerbitzua-botoia button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.zerbitzua-botoia button:hover {
+    background-color: #444;
+}
+
+#argiaIluna {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: gray;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#argiaIluna.iluna {
+    background-color: yellow;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}

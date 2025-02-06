@@ -1,0 +1,23 @@
+/*REGISTROAK*/
+
+#registroBotoiak {
+    display: flex;
+    gap: 40px;
+}
+
+#registroBotoiak button {
+    padding: 200px 150px;
+    font-size: 24px;
+    border: none;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+#registroBotoiak button:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+}
