@@ -11,6 +11,6 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Konexioa egiaztatu
 if ($conn->connect_error) {
-    die("Fallo en la conexión: " . $conn->connect_error);
+    die("Arazoa Konexioan: " . $conn->connect_error);
 }
 ?>

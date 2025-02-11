@@ -1,13 +1,11 @@
 .bidaia-formularioa {
 
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .bidaia-formularioa h1 {
@@ -16,34 +14,30 @@
     margin-top: 50px;
 }
 
-.bidaia-input {
+#form-bidaia {
     margin-bottom: 15px;
 }
 
-.bidaia-input label {
+#form-bidaia label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-.bidaia-input input,
-.bidaia-input select {
+#form-bidaia input,
+#form-bidaia select {
     width: calc(100% - 20px);
     font-size: 14px;
     box-sizing: border-box;
 }
 
 form {
-    background-color: rgb(228, 228, 228);
+    background-color: #fff;
     width: 40%;
-    margin: auto;
-    border-radius: 20px;
-    padding-left: 25px;
-    padding-right: 25px;
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
-    position: relative;
-    overflow: hidden;
-    margin-top: 10px;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
 form textarea {
@@ -60,12 +54,13 @@ form textarea {
     resize: none;
 }
 
-div input, select {
+div input,
+select {
     margin-bottom: 15px;
 }
 
-.bidaia-input input[type="date"],
-.bidaia-input input[type="number"] {
+#form-bidaia input[type="date"],
+#form-bidaia input[type="number"] {
     font-size: 14px;
 }
 
@@ -74,16 +69,100 @@ div input, select {
 }
 
 .bidaia-botoia button {
-    background-color: #000;
-    color: #fff;
-    border: none;
+    background-color: #007BFF;
+    color: white;
     padding: 10px 20px;
-    margin-bottom: 5px;
+    border: none;
     border-radius: 5px;
-    font-size: 16px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 .bidaia-botoia button:hover {
     background-color: #444;
+}
+
+#taula {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+#taula th,
+#taula td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+.taula-datuak {
+    width: 100%;
+    overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+
+    header {
+        color: black;
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+        padding: 10px;
+    }
+
+    img {
+        display: none;
+    }
+
+    #atzeraButton,
+    #logoutButton {
+        position: static;
+        margin: 5px 0;
+        width: auto;
+    }
+
+    form {
+        width: 90%;
+        padding: 15px;
+        margin-top: 50px;
+    }
+
+    .bidaia-botoia button {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    header {
+        color: black;
+        font-size: 18px;
+    }
+
+    img {
+        display: none;
+    }
+
+
+    form {
+        width: 95%;
+    }
+
+    #form-bidaia input,
+    #form-bidaia select,
+    form textarea {
+        font-size: 12px;
+    }
+
+    .bidaia-botoia button {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    #taula th,
+    #taula td {
+        font-size: 12px;
+        padding: 4px;
+    }
 }
